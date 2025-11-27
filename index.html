@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark Manager</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <link rel="shortcut icon" href="./assets/images/favicon-32x32.png" type="image/x-icon">
+</head>
+<body class="bg-[#E8F0EF] relative dark1">
+    <main class="w-full bg-[#E8F0EF] relative min-h-screen dark1">
+
+        <!-- logIn form -->
+         <div class="logInForm w-full h-full hidden justify-center items-center flex-col">
+            <form action="" class="rounded-lg border dark2 border-slate-200 shadow-2xs sm:w-lg px-8 py-6 sm:py-10 sm:px-12 bg-white" id="logInForm">
+                <img src="./assets/images/logo-light-theme.svg" class="logoChange" alt="">
+                <h1 class="text-4xl mt-4">Log into your account</h1>
+                <p class="text-slate-700 text-sm mt-2 mb-7">Welcome back! Please enter your details</p>
+                <label for="email">Email</label>
+                <input type="email" required id="loginEmailVal" class="border border-slate-500 w-full px-4 py-2 rounded-lg hover:border-slate-400 hover:shadow-emerald-700 block" placeholder="Enter your email"> <!--email Input--> 
+                <label for="password" class="mt-4 block">Password</label>
+                <input type="password" required id="loginPasswordVal" class="border border-slate-500 w-full px-4 py-2 rounded-lg hover:border-slate-400 hover:shadow-emerald-700 block" placeholder="Enter your password"> <!--password Input--> 
+                <button class="bg-[#014745] cursor-pointer active:scale-95 w-full p-2 my-4 rounded-lg text-white font-bold text-lg">Log in</button>
+                <div class="w-full flex flex-col justify-center items-center">
+                    <p class="text-slate-700 text-sm mt-2">Forgot password? <a href="#" id="resetPassBtn" class=" font-semibold">Reset it</a></p> <!--reset password-->
+                    <p class="text-slate-700 text-sm mt-2">Don't have an account? <a href="#" id="signUpBtn" class=" font-semibold">Sign up</a></p> <!--sign up-->
+                </div>
+            </form> 
+         </div><!-- login form ends here -->
+
+         <!-- sign up form -->
+         <div class="signUpForm w-full h-full hidden justify-center items-center flex-col">
+            <form action="" class="rounded-lg border dark2 border-slate-200 shadow-2xs sm:w-lg px-10 py-6 sm:py-10 sm:px-12 bg-white" id="signUpForm">
+                <img src="./assets/images/logo-light-theme.svg" class="logoChange" alt="">
+                <h1 class="text-4xl mt-4">Create your account</h1>
+                <p class="text-slate-700 text-sm mt-2 mb-7">Join us and start saving your favourite links - organized, and always within reach</p>
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="createAccountFullNameVal" required class="border border-slate-500 w-full px-4 py-2 rounded-lg hover:border-slate-400 hover:shadow-emerald-700 block" placeholder="Enter your full name">
+                <label for="email" class="block mt-4">Email *</label>
+                <input type="email" required class="border border-slate-500 w-full px-4 py-2 rounded-lg hover:border-slate-400 hover:shadow-emerald-700 block" id="createAccountEmailVal" placeholder="Enter your email"> <!--email Input--> 
+                <label for="password" class="mt-4 block">Password *</label>
+                <input type="password" required class="border border-slate-500 w-full px-4 py-2 rounded-lg hover:border-slate-400 hover:shadow-emerald-700 block" id="createAccountPasswordVal" placeholder="Enter your password"> <!--password Input--> 
+                <button class="bg-[#014745] cursor-pointer active:scale-95 w-full py-3 my-4 rounded-lg text-white font-bold text-lg">Create account</button>
+                <div class="w-full flex flex-col justify-center items-center">
+                    <p class="text-slate-700 text-sm mt-2">Already have an account? <a href="#" id="logInBtn" class="font-semibold">Log in</a></p> <!--Log in -->
+                </div>
+            </form> 
+         </div> <!-- signUp form ends here -->
+         <div class="w-full  h-full hidden justify-center items-center flex-col" id="confirmPass">
+            <form action="" id="confirmPassForm" class="dark2 rounded-lg border border-slate-200 shadow-2xs sm:w-lg px-8 py-6 sm:py-10 sm:px-12 bg-white">
+                <img src="./assets/images/logo-light-theme.svg" class="logoChange" alt="">
+                <h1 class="text-4xl mt-4">Reset your password</h1>
+                <p class="text-slate-700 text-sm mt-2 mb-7">Enter your new password below, make sure it's strong and secure.</p>
+                <label for="newPassword">New Password *</label>
+                <input type="password" required class="border border-slate-500 w-full px-4 py-2 rounded-lg hover:border-slate-400 hover:shadow-emerald-700 block" id="changePass" placeholder="Enter your new password"> <!--new password Input--> 
+                <label for="password" class="mt-4 block">Confirm Password</label>
+                <input type="password" id="confirmChangePass" required class="border border-slate-500 w-full px-4 py-2 rounded-lg hover:border-slate-400 hover:shadow-emerald-700 block" placeholder="Confirm your password"> <!--confirm password Input--> 
+                <button class="bg-[#014745] cursor-pointer active:scale-95 w-full p-2 my-4 rounded-lg text-white font-bold text-lg">Reset Password</button>
+                <div class="w-full flex flex-col justify-center items-center">
+                    <p class="text-slate-700 text-sm mt-2"><a href="#" class="backToLoginBtn font-semibold">Back to login</a></p> <!--back to login-->
+                    
+                </div>
+            </form> 
+         </div> <!-- reset password form ends here -->
+         <div class=" w-full h-full hidden justify-center items-center flex-col" id="resetEm">
+            <form action="" id="resetEmailId" class="dark2 rounded-lg border border-slate-200 shadow-2xs sm:w-lg px-8 py-6 sm:py-10 sm:px-12 bg-white">
+                <img src="./assets/images/logo-light-theme.svg" class="logoChange" alt="">
+                <h1 class="text-4xl mt-4">Forgot your password</h1>
+                <p class="text-slate-700 text-sm mt-2 mb-7">Enter your email address below, we'll send you a link to reset your password</p>
+                <label for="emailSend">Email *</label>
+                <input type="email" required id="resetEmailVal" class="border border-slate-500 w-full px-4 py-2 rounded-lg hover:border-slate-400 hover:shadow-emerald-700 block" placeholder="Enter your email"> <!--reset password email Input--> 
+                <button class="bg-[#014745] cursor-pointer active:scale-95 w-full p-2 my-4 rounded-lg text-white font-bold text-lg">Reset Password</button>
+                <div class="w-full flex flex-col justify-center items-center">
+                    <p class="text-sm mt-2"><a href="#" class="backToLoginBtn font-semibold">Back to login</a></p> <!--back to login-->
+                </div>
+            </form> 
+         </div> <!-- reset password form ends here -->
+        
+         <!-- hero Section starts here  -->
+
+         <div class="hero w-full flex relative insideHero justify-center bg-slate-300">
+            <div class="left hidden insideHero sm:block z-50 sm:w-[20%] px-4 w-fit bg-slate-100 border-green-700">
+                <div class="my-5">
+                    <img src="./assets/images/logo-light-theme.svg" class="logoChange" alt="">
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex gap-4 hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold" id="homeBtn">
+                        <img src="./assets/images/icon-home.svg" alt="">
+                        <button>Home</button>
+                    </div>
+                    <div class="flex gap-4 hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold" id="archiveBtn">
+                        <img src="./assets/images/icon-archive.svg" alt="">
+                        <button>Archieve</button>
+                    </div>
+                    <div>
+                        <p class="my-4">Tags</p>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="ai">AI</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                1
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="community">Community</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                5
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="compatibility">Compatibility</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                1
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="css">CSS</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                6
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="design">Design</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                1
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="framework">Framework</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                2
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="git">Git</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                1
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="html">HTML</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                2
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="javascript">Javascript</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                3
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="layout">Layout</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                3
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="learning">Learning</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                6
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="performance">Performance</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                2
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="practice">Practice</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                5
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="reference">Reference</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                4
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="tips">Tips</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                4
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="tools">Tools</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                4
+                            </div>
+                        </div>
+                        <div class="flex justify-between hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold items-center">
+                            <div class="inputData ">
+                                <input type="checkbox" name="tag" id="" class="">
+                                <label for="tutorial">Tutorial</label>
+                            </div>
+                            <div class="inputCount bg-slate-400 rounded-full w-5 h-5 flex justify-center items-center p-3">
+                                3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!--left side ends here -->
+
+            <div class="right dark2 border-l h-screen border-l-amber-600 sm:w-[80%] w-full bg-slate-100">
+                <div class="flex justify-between items-center pr-5">
+                    <div class="flex items-center">
+                        <div class="bar ml-2 sm:hidden hover:cursor-pointer border rounded border-slate-300">
+                            <img src="./assets/images/icon-menu-hamburger.svg" class="p-2 rounded" alt="">
+                        </div>
+                        <div class="relative m-4">
+                            <input type="search" name="" class="searchBar dark3 pl-7 py-2 border border-slate-300 rounded-md" placeholder="Search by Title" id="">
+                            <img src="./assets/images/icon-search.svg" class="absolute top-2.5 left-1" alt="">
+                        </div>
+                    </div>
+                    <div class="flex gap-2 text-white relative">
+                        <button class="flex gap-2 addBookmark active:scale-95 cursor-pointer  bg-emerald-600 py-2 px-4 rounded text-white">
+                            <img src="./assets/images/icon-add.svg" alt="">
+                            <p class="hidden sm:block">Add Bookmark</p>
+                        </button>
+                        <img src="./assets/images/image-avatar.webp" class="w-10 h-10 border-2 profileBtn border-green-800 rounded-full" alt="">
+                        <div class="absolute hidden profileDrop top-10 z-40 right-0 rounded-lg bg-white border border-slate-300 py-2 px-4">
+                            <div class="info flex gap-2 border-b py-2 border-slate-300">
+                                <div class="rounded-full w-12 h-12">
+                                    <img class="rounded-full w-12 h-12 " src="./assets/images/image-avatar.webp" alt="">
+                                </div>
+                                <div>
+                                    <h1 class="profileName text-xl"></h1>
+                                    <h3 class="profileEmail text-sm"></h3>
+                                </div>
+                            </div>
+                            <div class="theme flex gap-4 justify-between items-center py-2 border-b border-slate-300">
+                                <div class="flex gap-2">
+                                    <img src="./assets/images/icon-theme.svg" alt="">
+                                    <p>Theme</p>
+                                </div>
+                                <div class="flex gap-1 border sm:w-fit border-slate-500 rounded">
+                                    <button class="lightBtn px-2 py-1 cursor-pointer hover:bg-slate-300 outline-none active:scale-95"><img src="./assets/images/icon-light-theme.svg" alt=""></button>
+                                    <button class="darkBtn px-2 py-1 cursor-pointer hover:bg-slate-300 outline-none active:scale-95"><img src="./assets/images/icon-dark-theme.svg" alt=""></button>
+                                </div>
+                            </div>
+                            <button class="logOut cursor-pointer flex gap-2 py-2">
+                                <img src="./assets/images/icon-logout.svg" alt="">
+                                <p>Logout</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-200 dark1 px-4">
+                    <div class="flex relative justify-between mb-6 pt-5">
+                        <h1 class="text-4xl bookmark-title">All Bookmarks</h1>
+                        <button class="flex active:scale-95 cursor-pointer sorting border dark2 border-slate-300 gap-1 bg-white px-4 py-2 rounded">
+                            <img src="./assets/images/icon-sort.svg" alt="">
+                            <p>Sort by</p>
+                        </button>
+                        <div class="sortBy dark2 hidden border border-slate-300 absolute z-50 top-15 p-4 right-0 rounded-lg bg-white ">
+                            <button class="flex recentAdd outline-none hover:border-b hover:border-b-slate-400 active:scale-95 cursor-pointer gap-6 justify-between">
+                                <p>Recently Added</p>
+                                <img src="./assets/images/icon-check.svg" alt="">
+                            </button>
+                            <button class="flex recentVisit outline-none hover:border-b hover:border-b-slate-400 active:scale-95 cursor-pointer justify-between my-2">
+                                <p>Recently Visited</p>
+                                <img src="./assets/images/icon-check.svg" alt="">
+                            </button>
+                            <button class="flex mostVisit outline-none hover:border-b hover:border-b-slate-400 active:scale-95 cursor-pointer justify-between">
+                                <p>Most Visited</p>
+                                <img src="./assets/images/icon-check.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cards flex justify-center sm:justify-start gap-8 dark1 bg-slate-200 flex-wrap">
+                        
+                    </div>
+                </div>
+                
+            </div> <!--right side ends here-->
+         </div>
+
+    </main>
+    <!-- edit Bookmark and add bookmark -->
+        <div class="editBookmark dark2 hidden border px-6 py-8  border-slate-300 w-[90%] max-w-2xl bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg z-50">
+            <div class="">
+                <div class="flex w-full justify-between items-center">
+                    <h1 class="text-3xl font-semibold">Edit Bookmark</h1>
+                    <button type="button" class="close-modal w-fit border border-slate-300 rounded cursor-pointer p-2 hover:bg-slate-100">
+                        <img src="./assets/images/icon-close.svg" class="w-6 h-6">
+                    </button>
+                </div>
+                <p class="my-4 text-slate-600">
+                    Update your saved links details - change the title, description, URL and image anytime.
+                </p>
+            </div>
+            <!-- In your editBookmark form, add name attributes -->
+            <form class="flex dark2 flex-col gap-3">
+                <div>
+                    <label for="title" class="block text-sm font-medium mb-1">Title*</label>
+                    <input type="text" name="title" required class="border border-slate-300 outline-none px-4 py-2 rounded w-full" placeholder="Enter Title">
+                </div>
+                
+                <div>
+                    <label for="description" class="block text-sm font-medium mb-1">Description*</label>
+                    <textarea name="description" placeholder="Enter description" class="border border-slate-300 outline-none h-32 px-4 py-2 rounded w-full resize-none" maxlength="280"></textarea>
+                    <p class="w-full text-end text-sm text-slate-500 mt-1">0/280</p>
+                </div>
+                
+                <div>
+                    <label for="url" class="block text-sm font-medium mb-1">Website URL*</label>
+                    <input type="url" name="url" required class="border border-slate-300 outline-none px-4 py-2 rounded w-full" placeholder="https://example.com">
+                </div>
+                
+                <div>
+                    <label for="favicon" class="block text-sm font-medium mb-1">Favicon path*</label>
+                    <input type="text" name="favicon" placeholder="./assets/images/favicon-example.png" required class="border border-slate-300 outline-none px-4 py-2 rounded w-full">
+                </div>
+                
+                <div>
+                    <label for="tags" class="block text-sm font-medium mb-1">Tags* (comma separated)</label>
+                    <input type="text" name="tags" required class="border border-slate-300 outline-none px-4 py-2 rounded w-full" placeholder="Tools, Reference, CSS">
+                </div>
+                
+                <div class="w-full flex justify-end gap-2 mt-4">
+                    <button type="button" class="cancel-btn bg-white outline-none border border-slate-300 cursor-pointer text-black py-2 px-6 rounded-lg  active:scale-95">
+                        Cancel
+                    </button>
+                    <button type="submit" class="bg-[#014745] text-white cursor-pointer py-2 active:scale-95 px-6 rounded-lg hover:bg-[#013332]">
+                        Save Bookmark
+                    </button>
+                </div>
+            </form>
+        </div>
+    <script src="./formula.js"></script>
+</body>
+</html>
