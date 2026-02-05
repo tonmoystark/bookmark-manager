@@ -6,9 +6,10 @@
     <title>Bookmark Manager</title>
     <link rel="stylesheet" href="./src/output.css">
     <link rel="shortcut icon" href="./assets/images/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="./src/extra.css">
 </head>
-<body class="bg-[#E8F0EF] relative dark1">
-    <main class="w-full bg-[#E8F0EF] relative min-h-screen dark1">
+<body class="bg-[#E8F0EF] dark1">
+    <main class="w-full bg-[#E8F0EF] min-h-screen dark1">
 
         <!-- logIn form -->
          <div class="logInForm w-full h-full hidden justify-center items-center flex-col">
@@ -78,12 +79,12 @@
         
          <!-- hero Section starts here  -->
 
-         <div class="hero w-full flex relative insideHero justify-center bg-slate-300">
-            <div class="left hidden insideHero sm:block z-50 sm:w-[20%] px-4 w-fit bg-slate-100 border-green-700">
+         <div class="hero w-full flex insideHero justify-center bg-slate-300">
+            <div class="left hidden sm:relative z-50 insideHero  sm:block sm:w-[20%] px-4 w-fit bg-slate-100 ">
                 <div class="my-5">
                     <img src="./assets/images/logo-light-theme.svg" class="logoChange" alt="">
                 </div>
-                <div class="flex flex-col">
+                <div class="flex fixHeight flex-col">
                     <div class="flex gap-4 hover:bg-slate-400 p-2 rounded hover:cursor-pointer hover:font-semibold" id="homeBtn">
                         <img src="./assets/images/icon-home.svg" alt="">
                         <button>Home</button>
@@ -251,13 +252,13 @@
                 </div>
             </div> <!--left side ends here -->
 
-            <div class="right dark2 border-l h-screen border-l-amber-600 sm:w-[80%] w-full bg-slate-100">
+            <div class="right dark2  h-screen sm:w-[80%] w-full bg-slate-100">
                 <div class="flex justify-between items-center pr-5">
                     <div class="flex items-center">
                         <div class="bar ml-2 sm:hidden hover:cursor-pointer border rounded border-slate-300">
                             <img src="./assets/images/icon-menu-hamburger.svg" class="p-2 rounded" alt="">
                         </div>
-                        <div class="relative m-4">
+                        <div class="relative z-8 m-4">
                             <input type="search" name="" class="searchBar dark3 pl-7 py-2 border border-slate-300 rounded-md" placeholder="Search by Title" id="">
                             <img src="./assets/images/icon-search.svg" class="absolute top-2.5 left-1" alt="">
                         </div>
@@ -296,7 +297,7 @@
                     </div>
                 </div>
                 <div class="bg-slate-200 dark1 px-4">
-                    <div class="flex relative justify-between mb-6 pt-5">
+                    <div class="flex  justify-between mb-6 pt-5">
                         <h1 class="text-4xl bookmark-title">All Bookmarks</h1>
                         <button class="flex active:scale-95 cursor-pointer sorting border dark2 border-slate-300 gap-1 bg-white px-4 py-2 rounded">
                             <img src="./assets/images/icon-sort.svg" alt="">

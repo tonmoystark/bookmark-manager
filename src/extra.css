@@ -1,0 +1,9 @@
+.cards, .fixHeight, .hero{
+    overflow-y: scroll !important;
+    height: 100vh !important;
+}
+/* Make scrollbar thin */
+::-webkit-scrollbar {
+  display: none;
+}
+

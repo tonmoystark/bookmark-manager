@@ -187,7 +187,7 @@ function createBookmarkCard(bookmark) {
     const domain = new URL(bookmark.url).hostname;
     
     return `
-        <div class="bg-white w-[340px] max-w-md rounded px-6 py-4 mb-4">
+        <div class="bg-white h-fit w-[340px] max-w-md rounded px-6 py-4 mb-4">
             <div class="flex flex-col">
                 <div class="flex justify-between items-start">
                     <div class="flex gap-3 items-start">
